@@ -1,0 +1,79 @@
+---
+title: "Final Project Report"
+author: "Carina Fu"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Introduction:
+This dataset includes comprehensive data for the estimation of obesity levels 
+in individuals from the countries of Mexico, Peru, and Colombia, providing 
+valuable insights based on various factors such as their eating habits, 
+physical condition, lifestyle choices, and other health-related behaviors. 
+The information collected aims to offer a deeper understanding of the 
+prevalence of obesity in these regions, potentially aiding in the development 
+of tailored public health interventions and policies to combat obesity and 
+improve overall health outcomes across these nations.
+
+The dataset consists of 17 attributes and 2,111 records, each labeled with the 
+class variable "NObesity" (Obesity Level), which enables the classification of 
+data into categories such as Insufficient Weight, Normal Weight, Overweight 
+Level I, Overweight Level II, Obesity Type I, Obesity Type II, 
+and Obesity Type III. 
+
+**Mass body index** = $\frac{weight}{height*height}$
+
+Underweight refers to people whose mass body weight index is less 
+than 18.5. Normal weight people have a mass body weight index of 
+18.5 to 24.9, Overweight people have a mass body weight index of 25 to 29.9, 
+Obesity I 30.0 to 34.9, Obesity II 35.0 to 39.9, and Obesity III Higher than 40.
+
+```{r, here-i-am, include = FALSE}
+here::i_am(
+  "report.Rmd"
+)
+```
+
+```{r, load-data-and-label, include = FALSE}
+data <- readRDS(
+  file = here::here("data/data_clean.rds")
+)
+```
+
+# Descriptive Analysis
+
+## Tabular analysis
+
+Characteristics of the `r nrow(data)` viruses from the Obesity database are
+displayed in the table below. This table summarizes the relationship between 
+obesity level and daily water intake. At the same time, the table also gives 
+the median height and the median number of meals eaten per day. 
+It summarizes the data on daily water intake for people with or without a 
+family history of obesity and whether they smoke and their daily water intake.
+
+```{r echo=FALSE, out.width="60%", tabe1}
+knitr::include_graphics("tables/table_one.png")
+```
+
+## Graphical analysis
+
+The bar plot below shows the distribution of obesity levels in the dataset. 
+The most common categories are "Overweight Level I" and "Overweight Level III". 
+This indicates that the prevalence of overweight individuals is high in the 
+dataset.
+
+```{r fig-one, echo=FALSE, out.width="60%"}
+knitr::include_graphics(here::here("figures/figure_one.png"))
+```
+
+Below we report a scatter plot of NCP(number of main meals) as a function of 
+number of Height, to find out whether taller people eat more meals per day.
+It shows a linear relationship between obesity level and NCP,so we can conclude 
+that people with high obesity level eat more than others. We also see that 
+people who are taller tend to have a higher obesity level but does not seems to
+eat more main meals than others.
+
+```{r fig-two, echo=FALSE, out.width="60%"}
+knitr::include_graphics(here::here("figures/figure_two.png"))
+```
+
