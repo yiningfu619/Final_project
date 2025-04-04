@@ -6,19 +6,19 @@ report.html: report.Rmd \
 .data_clean: data/data_clean.rds
 
 .data/data_clean.rds: code/00_clean_data.R
-  Rscript code/00_clean_data.R
+	Rscript code/00_clean_data.R
 
 # creates tables/
 .tables/*.png: tables/table_one.png
 
 .tables/table_one.png: code/01_make_table1.R
-  Rscript code/01_make_table1.R
+	Rscript code/01_make_table1.R
 
 # creates figures/
 .figures/*.png: figures/figure_one.png figures/figure_two.png
 
 .figures: code/02_make_plots.R
-  Rscript code/02_make_plots.R
+	Rscript code/02_make_plots.R
 
 .PHONY: clean
 clean:
@@ -27,4 +27,4 @@ clean:
 	
 .PHONY: install
 install:
-    Rscript -e "renv::restore(prompt = FALSE)"
+	Rscript -e "renv::restore(prompt = FALSE)"
