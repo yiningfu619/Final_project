@@ -16,7 +16,7 @@
 
 `code/02_make_plots.R`
 - make bar plot and scatter plot
-- saves the two plots as `.png` objects in `plots/` folder
+- saves the two plots as `.png` objects in `figures/` folder
 
 `code/03_render_report.R`
 - renders `report.Rmd`
@@ -27,12 +27,25 @@
 
 `Makefile`
 - contains rules for building the report
+- contains rules for cleaning the report
+- contains rules for installing packages
 
 ------------------------------------------------------------------------
 
 # Generate the final report
 
 Use make and make clean to generate the final report.
+
+------------------------------------------------------------------------
+
+# Synchronize R Package
+
+Activate renv::restore() with the make command
+
+Typing the following commends in the Console:
+renv::activate()
+renv::status()
+renv::restore()
 
 ------------------------------------------------------------------------
 
