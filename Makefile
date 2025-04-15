@@ -8,5 +8,8 @@ report.html: report.Rmd code/03_render_report.R
 
 .PHONY: clean
 clean:
-	rm -f data/*.rds && rm -f *.html && rm -f figures/*.png && \ 
-	rm -f tables/* .png
+	rm -f data/*.rds && rm -f *.html && rm -f figures/*.png && rm -f tables/*.png
+	
+.PHONY: install
+install:
+    Rscript -e "renv::restore(prompt = FALSE)"

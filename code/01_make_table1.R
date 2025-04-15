@@ -9,6 +9,7 @@ data <- readRDS(
 # Tabular analysis
 
 # Load libraries
+install.packages("webshot2")
 library(here)
 library(dplyr)
 library(gtsummary)
