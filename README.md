@@ -34,19 +34,64 @@
 
 # Generate the final report
 
-Use make and make clean to generate the final report.
+Use make report.html and make clean to generate the final report.
 
 ------------------------------------------------------------------------
 
-# Synchronize R Package
+## How to synchronize the environment
 
-Activate renv::restore() with the make command
+To synchronize the project environment, use:
+```bash
+make install
+```
+This command has been tested on a Mac computer, so it should work and the environment
+will be built very quickly.
 
-Typing the following commends in the Console:
-renv::activate()
-renv::status()
+However, if you receive any errors that corresponds to the package "Matrix",
+please try the following command:
+```bash
+brew install gcc
+which gfortran
+```
+
+The second command will return the correct path to your Fortran compiler. Please 
+copy it and use it to replace /opt/homebrew/bin/gfortran in the configuration.
+```bash
+mkdir -p ~/.R
+
+cat <<EOF > ~/.R/Makevars
+FC = /opt/homebrew/bin/gfortran
+F77 = /opt/homebrew/bin/gfortran
+FLIBS = -L/opt/homebrew/opt/gcc/lib/gcc/\$(/opt/homebrew/bin/gfortran -dumpversion | cut -d. -f1) -lgfortran -lquadmath -lm
+EOF
+```
+
+Then, try to rerun make install.
+
+If failed, please follow the instructions here again.
+```bash
+/opt/homebrew/bin/gfortran -dumpversion
+```
+This command will give you a version of your gfortran. Usually it's 13 or 14.
+Please 
+copy it and use it to replace 14 in the configuration.
+```bash
+cat <<EOF > ~/.R/Makevars
+FC = /opt/homebrew/bin/gfortran
+F77 = /opt/homebrew/bin/gfortran
+FLIBS = -L/opt/homebrew/opt/gcc/lib/gcc/14 -lgfortran -lquadmath -lm
+EOF
+```
+
+If it's still not working, which might happen sometimes, please directly run the 
+following command in your console and terminal.
+I strongly recommend you run as administrator at this point.
+```console
 renv::restore()
-
+```
+```bash
+make Midterm_Project_Report.html
+```
 ------------------------------------------------------------------------
 
 # Introduction
