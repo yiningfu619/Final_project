@@ -52,7 +52,8 @@ It summarizes the data on daily water intake for people with or without a
 family history of obesity and whether they smoke and their daily water intake.
 
 ```{r echo=FALSE, out.width="60%", tabe1}
-knitr::include_graphics("tables/table_one.png")
+table_one<-readRDS("tables/table_one.rds")
+table_one
 ```
 
 ## Graphical analysis

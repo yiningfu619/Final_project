@@ -8,8 +8,16 @@ report.html: report.Rmd code/03_render_report.R
 
 .PHONY: clean
 clean:
-	rm -f data/*.rds && rm -f *.html && rm -f figures/*.png && rm -f tables/*.png
+	rm -f data/*.rds && rm -f *.html && rm -f figures/*.png && rm -f tables/*.rds
 	
 .PHONY: install
 install:
 	Rscript -e "renv::restore(prompt=FALSE)"
+
+# rule to build image
+project_image: 
+	docker build -t project_image .
+
+# rule to build the report automatically in our container
+report/report.html: 
+	docker run -v "$$(pwd)/report":/home/rstudio/project/report project_image
