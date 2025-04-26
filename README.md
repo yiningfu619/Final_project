@@ -34,8 +34,11 @@
 
 # Generate the final report
 
-Use make report.html and make clean to generate the final report.
+To generate the final report, use: 
 
+```bash
+make report.html  
+```
 ------------------------------------------------------------------------
 
 ## How to synchronize the environment
@@ -104,7 +107,14 @@ docker pull yiningfu/finalproject:latest
 ```
 or
 
+docker build:
+
 ```bash
 make project_image
+```
+
+docker run:
+
+```bash
 make report/report.html
 ```
