@@ -100,10 +100,10 @@ make report.html
 # Generate the Dockerfile
 
 The link of image from Docker hub:
-https://hub.docker.com/repository/docker/yiningfu/finalproject/general
+https://hub.docker.com/repository/docker/yiningfu/project_image/general
 
 ```bash
-docker pull yiningfu/finalproject:latest
+docker pull yiningfu/project_image:latest
 ```
 or
 
